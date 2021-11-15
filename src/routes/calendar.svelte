@@ -1,14 +1,29 @@
+<script context="module">
+	export const ssr = false;
+</script>
+
 <script>
 	import { onMount } from 'svelte';
-	import FullCalendar from 'svelte-fullcalendar';
+	import { Calendar } from '@fullcalendar/core';
+	import dayGridPlugin from '@fullcalendar/daygrid';
+	import timeGridPlugin from '@fullcalendar/timegrid';
+	import listPlugin from '@fullcalendar/list';
 
-	let options = { initialView: 'dayGridMonth', plugins: [] };
+	let calendarEl;
+	let calendar;
 
 	onMount(async () => {
-		options.plugins = [
-			(await import('@fullcalendar/daygrid')).default,
-		];
+		calendar = new Calendar(calendarEl, {
+			plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
+			initialView: 'dayGridMonth',
+			headerToolbar: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'dayGridMonth,timeGridWeek,listWeek'
+			}
+		});
+		calendar.render();
 	});
 </script>
 
-<FullCalendar {options} />
+<div bind:this={calendarEl} />
