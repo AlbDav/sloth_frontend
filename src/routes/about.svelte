@@ -1,5 +1,6 @@
 <script context="module">
 	import { browser, dev } from '$app/env';
+	import { Button } from 'attractions';
 
 	// we don't need any JS on this page, though we'll load
 	// it in dev so that we get hot module replacement...
@@ -39,6 +40,8 @@
 		The <a href="/todos">TODOs</a> page illustrates SvelteKit's data loading and form handling. Try using
 		it with JavaScript disabled!
 	</p>
+
+	<Button>ciao</Button>
 </div>
 
 <style>
