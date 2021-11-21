@@ -44,8 +44,11 @@
 	<Button>ciao</Button>
 </div>
 
-<style>
+<style lang="scss">
+	@use '~attractions/_variables';
+
 	.content {
+		color: variables.$main;
 		width: 100%;
 		max-width: var(--column-width);
 		margin: var(--column-margin-top) auto 0 auto;
